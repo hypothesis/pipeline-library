@@ -1,5 +1,5 @@
 #!groovy
 
-def call() {
-    println 'Hello there, world!'
+def call(String name = 'world') {
+    echo "Hello there, ${name}!"
 }
