@@ -4,7 +4,9 @@
 // `latest` tag.
 def call(image) {
     // Blank URL uses the public Docker Hub.
-    docker.withRegistry(url: '', credentialsId: 'docker-hub-build') {
+    url = ''
+    credentialsId = 'docker-hub-build'
+    docker.withRegistry(url, credentialsId) {
         image.push()
         image.push('latest')
     }
