@@ -9,15 +9,17 @@
  * Named parameters:
  *
  *     `image` (required): Docker image within which to run enclosed steps
+ *     `runArgs` (optional): arguments to `docker run`
  */
 def call(Map parameters = [:], Closure body) {
     image = parameters.image
+    runArgs = parameters.get('runArgs', '')
 
     if (!image) {
         error 'you must provide a docker image'
     }
 
-    image.inside() {
+    image.inside(runArgs) {
         body()
     }
 }
