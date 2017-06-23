@@ -41,7 +41,7 @@ def call(Map parameters = [:]) {
 
     build(job: 'deployment',
           parameters: [[$class: 'StringParameterValue', name: 'APP', value: app],
-                       [$class: 'StringParameterValue', name: 'TYPE', value: 'exact-version'],
+                       [$class: 'StringParameterValue', name: 'TYPE', value: 'deploy'],
                        [$class: 'StringParameterValue', name: 'APP_DOCKER_VERSION', value: tag],
                        [$class: 'StringParameterValue', name: 'ENV', value: env]])
 }
