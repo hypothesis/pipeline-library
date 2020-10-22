@@ -28,7 +28,7 @@ def call(Map parameters = [:]) {
     if (!app) {
         error 'you must provide an application name'
     }
-    if (env != 'qa' && env != 'prod') {
+    if (!env) {
         error 'you must provide a valid environment name'
     }
 
