@@ -62,6 +62,7 @@ What helpers are currently defined by this library?
 | [`buildApp`](vars/buildApp.groovy)         | function | Builds an application Docker image from a Dockerfile.                           |
 | [`buildMeta`](vars/buildMeta.groovy)       | variable | Provides access to build version metadata from git.                             |
 | [`deployApp`](vars/deployApp.groovy)       | function | Deploy an application to a named deployment environment.                        |
+| [`onlyOnMain`](vars/onlyOnMain.groovy)     | function | Execute pipeline steps only on the `main` branch.                               |
 | [`onlyOnMaster`](vars/onlyOnMaster.groovy) | function | Execute pipeline steps only on the `master` branch.                             |
 | [`releaseApp`](vars/releaseApp.groovy)     | function | Release a built application Docker image to the Docker Hub (or other registry). |
 | [`sayHello`](vars/sayHello.groovy)         | function | Hello, world!                                                                   |
