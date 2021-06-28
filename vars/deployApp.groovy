@@ -21,6 +21,7 @@ def call(Map parameters = [:]) {
     image = parameters.image
     app = parameters.app
     env = parameters.env
+    region = parameters.region ?: 'us-west-1'
 
     if (!image) {
         error 'you must provide a docker image'
@@ -43,5 +44,6 @@ def call(Map parameters = [:]) {
           parameters: [[$class: 'StringParameterValue', name: 'APP', value: app],
                        [$class: 'StringParameterValue', name: 'TYPE', value: 'deploy'],
                        [$class: 'StringParameterValue', name: 'APP_DOCKER_VERSION', value: tag],
-                       [$class: 'StringParameterValue', name: 'ENV', value: env]])
+                       [$class: 'StringParameterValue', name: 'ENV', value: env]]
+                       [$class: 'StringParameterValue', name: 'REGION', value: region]])
 }
