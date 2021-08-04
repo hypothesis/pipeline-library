@@ -7,6 +7,10 @@
  * Named parameters:
  *
  *    `name` (required): the name of the Docker image to build
+ *    `path` (optional): target directory to build (instead of root). This will
+ *        disable the default behavior of using committed files only and will
+ *        include any local files in the specified path in the docker build
+ *        environment.
  *
  * Usage (e.g. in a pipeline script):
  *
@@ -29,6 +33,7 @@
  */
 def call(Map parameters = [:]) {
     name = parameters.name
+    path = parameters.path
     version = buildMeta.version()
     tag = version.replaceAll('\\+', '-')
 
@@ -40,6 +45,11 @@ def call(Map parameters = [:]) {
     currentBuild.displayName = version
     currentBuild.description = "Docker: ${tag}"
 
-    sh "git archive HEAD | docker build -t ${name}:${tag} -"
+    if (!path) {
+        sh "git archive HEAD | docker build -t ${name}:${tag} -"
+    } else {
+        sh "docker build -t ${name}:${tag} ${path}"
+    }
+
     return docker.image("${name}:${tag}")
 }
