@@ -46,9 +46,9 @@ def call(Map parameters = [:]) {
     currentBuild.description = "Docker: ${tag}"
 
     if (!path) {
-        sh "git archive HEAD | docker build -t ${name}:${tag} -"
+        sh "git archive HEAD | docker build -t ${name}:${tag} --build-arg DOCKER_TAG=${tag} -"
     } else {
-        sh "docker build -t ${name}:${tag} ${path}"
+        sh "docker build -t ${name}:${tag} --build-arg DOCKER_TAG=${tag} ${path}"
     }
 
     return docker.image("${name}:${tag}")
