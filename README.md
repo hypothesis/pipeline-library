@@ -1,3 +1,5 @@
+**Obsolete: In September 2022, Hypothesis application deployments were migrated from Jenkins to GitHub Actions. Hence this library is no longer used.**
+
 pipeline library
 ================
 
